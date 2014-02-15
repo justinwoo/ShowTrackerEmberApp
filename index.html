@@ -13,7 +13,14 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-    <div class="navbar navbar-default">
+    {{partial "navbar"}}
+    <div class="container">
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="navbar">
+  <div class="navbar navbar-default">
       <a class="navbar-brand" href="#">ShowTracker</a>
       <ul class="nav navbar-nav">
         <li>
@@ -23,10 +30,6 @@
           {{#link-to 'about'}}About{{/link-to}}
         </li>
       </ul>
-    </div>
-
-    <div class="container">
-      {{outlet}}
     </div>
   </script>
 
