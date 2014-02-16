@@ -79,21 +79,3 @@ App.ShowsController = Ember.ArrayController.extend({
         }
     }
 });
-
-App.EditshowController = Ember.ObjectController.extend({
-    newTitle: null,
-    newEpisode: null,
-    actions: {
-        doneEditing: function(item) {
-            var newTitle = this.get('newTitle');
-            var newEpisode = this.get('newEpisode');
-            if (newTitle != null) {
-                item.set('title', newTitle);
-            }
-            if (newEpisode != null) {
-                item.set('episode', newEpisode);
-            }
-            item.save();
-        }
-    }
-});
