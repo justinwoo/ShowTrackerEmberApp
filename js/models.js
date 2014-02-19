@@ -3,6 +3,10 @@ App.Show = DS.Model.extend({
     episode: DS.attr('number')
 });
 
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+    namespace: 'service'
+});
+
 App.Show.FIXTURES = [{
     id: '1',
     title: '俺のお嫁さんと一心同体',
