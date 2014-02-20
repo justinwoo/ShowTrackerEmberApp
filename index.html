@@ -48,13 +48,11 @@
       </div>
       <table class="table">
         <thead>
-          <th>ID</th>
           <th colspan="2">名</th>
           <th colspan="3">数</th>
         </thead>
         {{#each}}
           <tr>
-            <td>{{id}}</td>
             <td>{{title}}</td>
             <td>
               <button {{action confirmEdit this}} class="btn btn-default btn-sm">
@@ -80,7 +78,6 @@
           </tr>
         {{/each}}
         <tr>
-          <td></td>
           <td colspan="2">
             {{input value=rowNewTitle action="createShow" placeholder="新しい行を入れる" classNames="form-control" id="rowTitleInput" type="text"}}
           </td>
