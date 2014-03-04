@@ -5,11 +5,6 @@
 <title>Show Tracker Web App</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <style type="text/css">
-    body {
-      font-family: "Meiryo";
-    }
-  </style>
 </head>
 <body>
   <script type="text/x-handlebars">
@@ -34,29 +29,31 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <h3>こっちへ紹介を書いてくれ！</h3>
+    <h2>Welcome to the Show Tracker Web Application!</h2>
+    <h3>This Ember.js app provides you a UI for the Show Tracker which will help you track episodes of shows that you are watching.</h3>
   </script>
 
   <script type="text/x-handlebars" id="about">
-    <h3>こっちへ説明を書いてくれ！</h3>
+    <h2>This was made by Justin Woo.<h2>
+    <h3>Please come see the <a href="www.github.com/kimagure/ShowTrackerEmberApp">GitHub repository</a> and submit issues and pull requests!</h3>
   </script>
 
   <script type="text/x-handlebars" id="shows">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">今季節の番組</h4>
+        <h4 class="panel-title">Shows this season</h4>
       </div>
       <table class="table">
         <thead>
-          <th colspan="2">名</th>
-          <th colspan="3">数</th>
+          <th colspan="2">Title</th>
+          <th colspan="3">Episode</th>
         </thead>
         {{#each}}
           <tr>
             <td>{{title}}</td>
             <td>
               <button {{action confirmEdit this}} class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-pencil"></span>変更
+                <span class="glyphicon glyphicon-pencil"></span> Edit
               </button>
             </td> 
             <td>{{episode}}</td>
@@ -72,17 +69,22 @@
             </td>
             <td>
               <button class="btn btn-danger btn-sm btn-block" {{action confirmDelete this}}>
-                <span class="glyphicon glyphicon-trash"></span>消す
+                <span class="glyphicon glyphicon-trash"></span> Delete
               </button>
             </td>
           </tr>
         {{/each}}
         <tr>
           <td colspan="2">
-            {{input value=rowNewTitle action="createShow" placeholder="新しい行を入れる" classNames="form-control" id="rowTitleInput" type="text"}}
+            {{input value=rowNewTitle action="createShow" placeholder="Insert a new show" classNames="form-control" id="rowTitleInput" type="text"}}
           </td>
-          <td colspan="3">
+          <td colspan="2">
             {{input value=rowNewEpisode action="createShow" classNames="form-control" id="rowEpisodeInput" type="number"}}
+          </td>
+          <td>
+            <button class="btn btn-success btn-sm btn-block" {{action createShow}}>
+              <span class="glyphicon glyphicon-ok"></span> Submit
+            </button>
           </td>
         </tr>
       </table>
@@ -93,14 +95,14 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="deleteModalLabel">完全消す目的確認</h4>
+            <h4 class="modal-title" id="deleteModalLabel">Delete confirmation</h4>
           </div>
           <div class="modal-body alert-danger">
-            <h3>"{{modalTitle}}" 消してもいいの？</h3>
+            <h3>Are you sure you want to delete "{{modalTitle}}"?</h3>
           </div>
           <div class="modal-footer">
-            <button {{action cancelDelete}} type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
-            <button {{action delete}} type="button" class="btn btn-danger">イェス</button>
+            <button {{action cancelDelete}} type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button {{action delete}} type="button" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
@@ -111,7 +113,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="deleteModalLabel">変更使用フォム</h4>
+            <h4 class="modal-title" id="deleteModalLabel">Editing Form</h4>
           </div>
           <div class="modal-body">
             <form role="form">
@@ -126,27 +128,8 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button {{action cancelEdit}} type="button" class="btn btn-default">戻る</button>
-            <button {{action edit}} type="button" class="btn btn-primary">入力</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" id="editshow">
-    <div class="row">
-      <div class="col-sm-offset-3 col-sm-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">Edit Show #{{id}}</h4>
-          </div>
-          <div class="panel-body">
-            {{partial 'editshow/form'}}
-            <div class="text-right">
-              <button {{action "doneEditing" this}} class="btn btn-default">セーブ</button>
-              <a href="#/shows" class="btn btn-default">戻る</a>
-            </div>
+            <button {{action cancelEdit}} type="button" class="btn btn-default">Cancel</button>
+            <button {{action edit}} type="button" class="btn btn-primary">Edit</button>
           </div>
         </div>
       </div>
