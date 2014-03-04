@@ -1,7 +1,7 @@
 App = Ember.Application.create();
-// App.Store = DS.Store.extend({
-//     adapter: DS.FixtureAdapter
-// });
+App.Store = DS.Store.extend({
+    adapter: DS.FixtureAdapter
+});
 
 App.ShowsController = Ember.ArrayController.extend({
     modalId: null,
