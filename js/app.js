@@ -33,6 +33,9 @@ App.ShowsController = Ember.ArrayController.extend({
         },
         createShow: function() {
             var newTitle = this.get('rowNewTitle');
+            if (newTitle === '') {
+                return false;
+            }
             var newEpisode = this.get('rowNewEpisode');
             var newShow = this.store.createRecord('show', {
                 title: newTitle,
