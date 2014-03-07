@@ -3,9 +3,7 @@ App.Show = DS.Model.extend({
     episode: DS.attr('number')
 });
 
-// App.ApplicationAdapter = DS.RESTAdapter.extend({
-//     namespace: 'service'
-// });
+App.ApplicationAdapter = DS.LSAdapter.extend({});
 
 App.Show.FIXTURES = [{
     id: '1',
