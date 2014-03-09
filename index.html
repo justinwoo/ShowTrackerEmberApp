@@ -51,7 +51,7 @@
         {{#each}}
           <tr>
             <td>{{title}}</td>
-            <td>
+            <td class="text-right">
               <button {{action confirmEdit this}} class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span> Edit
               </button>
@@ -75,13 +75,23 @@
           </tr>
         {{/each}}
         <tr>
-          <td colspan="2">
+          <td colspan="2" class="col-md-7 col-xs-5">
             {{input value=rowNewTitle action="createShow" placeholder="Insert a new show" classNames="form-control" id="rowTitleInput" type="text"}}
           </td>
-          <td colspan="2">
+          <td class="col-md-1 col-xs-2">
             {{input value=rowNewEpisode action="createShow" classNames="form-control" id="rowEpisodeInput" type="number"}}
           </td>
-          <td>
+          <td class="col-md-1 col-xs-3">
+            <div class="btn-group">
+              <button class="btn btn-default btn-sm" {{action incrementNewEpisode}}>
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+              <button class="btn btn-default btn-sm" {{action decrementNewEpisode}}>
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </div>
+          </td>
+          <td class="col-md-2 col-xs-2">
             <button class="btn btn-success btn-sm btn-block" {{action createShow}}>
               <span class="glyphicon glyphicon-ok"></span> Submit
             </button>
@@ -140,6 +150,7 @@
   <script src="js/libs/handlebars.min.js"></script>
   <script src="js/libs/ember.min.js"></script>
   <script src="js/libs/ember-data.min.js"></script>
+  <script src="js/libs/localstorage_adapter.js"></script>
   <script src="js/libs/bootstrap.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/router.js"></script>

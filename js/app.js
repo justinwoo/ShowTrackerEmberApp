@@ -23,13 +23,26 @@ App.ShowsController = Ember.ArrayController.extend({
             item.set('episode', episode);
             item.save();
         },
+        incrementNewEpisode: function() {
+            var episode = this.get('rowNewEpisode');
+            this.set('rowNewEpisode', episode + 1);
+        },
+        decrementNewEpisode: function() {
+            var episode = this.get('rowNewEpisode');
+            this.set('rowNewEpisode', episode - 1);
+        },
         createShow: function() {
             var newTitle = this.get('rowNewTitle');
+            if (newTitle === '') {
+                return false;
+            }
             var newEpisode = this.get('rowNewEpisode');
             var newShow = this.store.createRecord('show', {
                 title: newTitle,
                 episode: newEpisode
             });
+            this.set('rowNewTitle', '');
+            this.set('rowNewEpisode', 1);
             this.transitionTo('shows', newShow.save());
         },
         edit: function() {

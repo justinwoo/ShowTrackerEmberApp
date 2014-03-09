@@ -3,24 +3,22 @@ App.Show = DS.Model.extend({
     episode: DS.attr('number')
 });
 
-// App.ApplicationAdapter = DS.RESTAdapter.extend({
-//     namespace: 'service'
-// });
+App.ApplicationAdapter = DS.LSAdapter.extend({});
 
-// App.Show.FIXTURES = [{
-//     id: '1',
-//     title: '俺のお嫁さんと一心同体',
-//     episode: '1'
-// }, {
-//     id: '2',
-//     title: '俺のお嫁さんと一心同体2',
-//     episode: '3'
-// }, {
-//     episode: '7',
-//     title: "世界征服 (正解制服)",
-//     id: '3'
-// }, {
-//     episode: '5',
-//     title: "いなり、くんくん",
-//     id: '4'
-// }];
+App.Show.FIXTURES = [{
+    id: '1',
+    title: 'Dragon Bowl S',
+    episode: '1'
+}, {
+    id: '2',
+    title: 'Yu Yu Hack Show',
+    episode: '3'
+}, {
+    episode: '7',
+    title: "Yet Another Terrible VN Adaptation",
+    id: '3'
+}, {
+    episode: '5',
+    title: "Yet Another Yoko Kanno Show",
+    id: '4'
+}];
