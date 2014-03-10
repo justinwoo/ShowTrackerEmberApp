@@ -2,7 +2,7 @@ export default Ember.ArrayController.extend({
     modalId: null,
     modalTitle: null,
     modalEpisode: null,
-    rowNewTitle: null,
+    rowNewTitle: '',
     rowNewEpisode: 1,
 
     actions: {
@@ -27,8 +27,9 @@ export default Ember.ArrayController.extend({
             this.set('rowNewEpisode', episode - 1);
         },
         createShow: function() {
-            var newTitle = this.get('rowNewTitle');
+            var newTitle = this.get('rowNewTitle').trim();
             if (newTitle === '') {
+                this.set('rowNewTitle', '');
                 return false;
             }
             var newEpisode = this.get('rowNewEpisode');
