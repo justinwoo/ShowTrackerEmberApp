@@ -1,4 +1,6 @@
 export default Ember.ArrayController.extend({
+    sortProperties: ['title'],
+    sortAscending: true,
     modalId: null,
     modalTitle: null,
     modalEpisode: null,
